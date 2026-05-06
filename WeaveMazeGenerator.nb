@@ -1,0 +1,4193 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    186584,       4185]
+NotebookOptionsPosition[    185008,       4154]
+NotebookOutlinePosition[    185351,       4169]
+CellTagsIndexPosition[    185308,       4166]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"m", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cvorovi", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "\"\<*\>\"", "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bojeCvorova", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"False", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"roditelji", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"djeca", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vrijeme", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"start", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Random", "[", 
+      RowBox[{"Integer", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "m"}], "}"}]}], "]"}], ",", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Integer", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "n"}], "}"}]}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stek", "=", 
+   RowBox[{"{", "start", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vremena", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"genLista", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prored", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"brojac", "=", "1"}], ";"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwd0c0rwwEYwPEfjVirte3AbGjGHMSycLHih7YhkiulSHMYdnBw2MWSiBAr
+Uw6SKLbRzFvzNm/tYpmhcRCHRfotVt7mIM/zHL59/oCvor23uTORYRg5hP4E
+Ov1WEceuqPzkQ97lL7qYGyKXlWnlY6BGWEvGbxSNaEDbRnZF6gROkD89KESt
+C2q7C+zebiDde17nGnjx3udCpR8Hm2hHfc4WGnzxcWi/XhJFx++z0zdAr2OC
+PKkq/fSAzbYlkhe38wLg15EiCS08k/ITxBybuWMmH+VDehl4q540oLrkRyYL
+vIoVJ6Cth2WpqLVmiowYjVrUXWIi7wTDBlRSGSLPDWerSvC7Z96Bhn0WUS6o
+LPCQPm/9PCq2OciZXXO1CpSLg2TE33LMgkHhM1k12/SEHpk3yNMKWfQPHM3I
+jqFz0TZtNJ9jPaZLcv01ZeChCL6ELeTOiP1No+PYff41+Q+oXdHk
+  "],ExpressionUUID->"3b4b64ac-f567-470e-a9d4-25b56c473182"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"jeLiPutanjaMoguca", "[", 
+   RowBox[{"putanja_", ",", "tunel_", ",", "xTren_", ",", "yTren_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"promjenaSmjera", "=", "0"}], "}"}], ",", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"tunel", "\[Equal]", "True"}], ",", 
+      RowBox[{
+       RowBox[{"promjenaSmjera", "=", 
+        RowBox[{"Length", "[", 
+         RowBox[{"djeca", "[", 
+          RowBox[{"[", 
+           RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "]"}]}], ";", 
+       RowBox[{"Return", "[", 
+        RowBox[{"Or", "[", 
+         RowBox[{
+          RowBox[{"And", "[", 
+           RowBox[{
+            RowBox[{"putanja", "\[Equal]", "\"\<S\>\""}], ",", 
+            RowBox[{"xTren", ">", "2"}], ",", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"djeca", "[", 
+               RowBox[{"[", 
+                RowBox[{
+                 RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}], 
+              "]"}], "<=", 
+             RowBox[{"Length", "[", 
+              RowBox[{
+               RowBox[{"cvorovi", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}], 
+               "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+            RowBox[{"Or", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<I\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<IT\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<ZT\>\""}]}], "]"}], 
+            ",", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}], ",", 
+            RowBox[{"!", 
+             RowBox[{"bojeCvorova", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"xTren", "-", "2"}], ",", "yTren"}], "]"}], "]"}]}]}],
+            "]"}], ",", 
+          RowBox[{"And", "[", 
+           RowBox[{
+            RowBox[{"putanja", "\[Equal]", "\"\<J\>\""}], ",", 
+            RowBox[{"xTren", "<", 
+             RowBox[{"m", "-", "1"}]}], ",", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"djeca", "[", 
+               RowBox[{"[", 
+                RowBox[{
+                 RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}], 
+              "]"}], "<=", 
+             RowBox[{"Length", "[", 
+              RowBox[{
+               RowBox[{"cvorovi", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}], 
+               "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+            RowBox[{"Or", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<I\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<IT\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                  "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}],
+                   "]"}], "]"}], "]"}], "\[Equal]", "\"\<ZT\>\""}]}], "]"}], 
+            ",", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}], ",", 
+            RowBox[{"!", 
+             RowBox[{"bojeCvorova", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"xTren", "+", "2"}], ",", "yTren"}], "]"}], "]"}]}]}],
+            "]"}], ",", 
+          RowBox[{"And", "[", 
+           RowBox[{
+            RowBox[{"putanja", "\[Equal]", "\"\<I\>\""}], ",", 
+            RowBox[{"yTren", "<", 
+             RowBox[{"n", "-", "1"}]}], ",", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"djeca", "[", 
+               RowBox[{"[", 
+                RowBox[{"xTren", ",", 
+                 RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "]"}], "<=", 
+             RowBox[{"Length", "[", 
+              RowBox[{
+               RowBox[{"cvorovi", "[", 
+                RowBox[{"[", 
+                 RowBox[{"xTren", ",", 
+                  RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+            RowBox[{"Or", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<S\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<J\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<ST\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<JT\>\""}]}], "]"}], ",", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{"xTren", ",", 
+               RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}], ",", 
+            RowBox[{"!", 
+             RowBox[{"bojeCvorova", "[", 
+              RowBox[{"[", 
+               RowBox[{"xTren", ",", 
+                RowBox[{"yTren", "+", "2"}]}], "]"}], "]"}]}]}], "]"}], ",", 
+          RowBox[{"And", "[", 
+           RowBox[{
+            RowBox[{"putanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+            RowBox[{"yTren", ">", "2"}], ",", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"djeca", "[", 
+               RowBox[{"[", 
+                RowBox[{"xTren", ",", 
+                 RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "]"}], "<=", 
+             RowBox[{"Length", "[", 
+              RowBox[{
+               RowBox[{"cvorovi", "[", 
+                RowBox[{"[", 
+                 RowBox[{"xTren", ",", 
+                  RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+            RowBox[{"Or", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<S\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<J\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<ST\>\""}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"Length", "[", 
+                  RowBox[{"djeca", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", 
+                    RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], "]"}], "]"}],
+                 "]"}], "\[Equal]", "\"\<JT\>\""}]}], "]"}], ",", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{"xTren", ",", 
+               RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}], ",", 
+            RowBox[{"!", 
+             RowBox[{"bojeCvorova", "[", 
+              RowBox[{"[", 
+               RowBox[{"xTren", ",", 
+                RowBox[{"yTren", "-", "2"}]}], "]"}], "]"}]}]}], "]"}]}], 
+         "]"}], "]"}]}], ",", 
+      RowBox[{"Return", "[", 
+       RowBox[{"Or", "[", 
+        RowBox[{
+         RowBox[{"And", "[", 
+          RowBox[{
+           RowBox[{"putanja", "\[Equal]", "\"\<S\>\""}], ",", 
+           RowBox[{"xTren", ">", "1"}], ",", 
+           RowBox[{"!", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"xTren", "-", "1"}], ",", "yTren"}], "]"}], "]"}]}]}], 
+          "]"}], ",", 
+         RowBox[{"And", "[", 
+          RowBox[{
+           RowBox[{"putanja", "\[Equal]", "\"\<J\>\""}], ",", 
+           RowBox[{"xTren", "<", "m"}], ",", 
+           RowBox[{"!", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"xTren", "+", "1"}], ",", "yTren"}], "]"}], "]"}]}]}], 
+          "]"}], ",", 
+         RowBox[{"And", "[", 
+          RowBox[{
+           RowBox[{"putanja", "\[Equal]", "\"\<I\>\""}], ",", 
+           RowBox[{"yTren", "<", "n"}], ",", 
+           RowBox[{"!", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{"xTren", ",", 
+               RowBox[{"yTren", "+", "1"}]}], "]"}], "]"}]}]}], "]"}], ",", 
+         RowBox[{"And", "[", 
+          RowBox[{
+           RowBox[{"putanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+           RowBox[{"yTren", ">", "1"}], ",", 
+           RowBox[{"!", 
+            RowBox[{"bojeCvorova", "[", 
+             RowBox[{"[", 
+              RowBox[{"xTren", ",", 
+               RowBox[{"yTren", "-", "1"}]}], "]"}], "]"}]}]}], "]"}]}], 
+        "]"}], "]"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.76737514981502*^9, {3.76737542877771*^9, 3.7673754465395412`*^9}, 
+   3.7673754940728254`*^9, 3.7673755847713842`*^9, {3.7673756600103164`*^9, 
+   3.767375720070422*^9}, {3.7673759518132305`*^9, 3.767375960939246*^9}, {
+   3.7673789692195954`*^9, 3.76737911439645*^9}, {3.767379177576562*^9, 
+   3.7673792143614264`*^9}, {3.767379473636882*^9, 3.7673794876925063`*^9}, {
+   3.767379730162533*^9, 3.767379784996629*^9}, {3.767382466250139*^9, 
+   3.7673824803213644`*^9}, {3.767382510928618*^9, 3.767382547354682*^9}, {
+   3.7674293672660637`*^9, 3.7674296075220857`*^9}, {3.7674300214874125`*^9, 
+   3.76743009385594*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"17e573aa-a3b7-446c-af83-3e04bfb76c76"],
+
+Cell[BoxData[
+ RowBox[{"While", "[", 
+  RowBox[{
+   RowBox[{"stek", "\[NotEqual]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"xTren", "=", 
+     RowBox[{"Part", "[", 
+      RowBox[{
+       RowBox[{"Last", "[", "stek", "]"}], ",", "1"}], "]"}]}], ";", 
+    RowBox[{"yTren", "=", 
+     RowBox[{"Part", "[", 
+      RowBox[{
+       RowBox[{"Last", "[", "stek", "]"}], ",", "2"}], "]"}]}], ";", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{"bojeCvorova", "[", 
+        RowBox[{"[", 
+         RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"vrijeme", "++"}], ";", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{
+         RowBox[{"vremena", "[", 
+          RowBox[{"[", 
+           RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "vrijeme"}], 
+        "]"}], ";", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"genLista", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"xTren", ",", "yTren"}], "}"}], ",", "True"}], "}"}]}], 
+        "]"}]}]}], "]"}], ";", 
+    RowBox[{
+     RowBox[{"bojeCvorova", "[", 
+      RowBox[{"[", 
+       RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "=", "True"}], ";", 
+    RowBox[{"putanje", "=", 
+     RowBox[{"RandomSample", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<S\>\"", ",", "\"\<J\>\"", ",", "\"\<I\>\"", ",", "\"\<Z\>\""}], 
+       "}"}], "]"}]}], ";", 
+    RowBox[{"putanjaNemoguca", "=", "True"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", 
+       StyleBox["\[LessEqual]",
+        FontWeight->"Plain"], 
+       RowBox[{"Length", "[", "putanje", "]"}]}], ",", 
+      RowBox[{"i", "++"}], ",", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"jeLiPutanjaMoguca", "[", 
+          RowBox[{
+           RowBox[{"putanje", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", "True", ",", "xTren", ",", 
+           "yTren"}], "]"}], "\[Equal]", "True"}], ",", 
+        RowBox[{
+         RowBox[{"putanjaNemoguca", "=", "False"}], ";", 
+         RowBox[{"xDest", "=", 
+          RowBox[{"xTren", "+", 
+           RowBox[{"Which", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"putanje", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}], ",",
+              "2", ",", 
+             RowBox[{
+              RowBox[{"putanje", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}], ",", 
+             RowBox[{"-", "2"}], ",", "True", ",", "0"}], "]"}]}]}], ";", 
+         RowBox[{"yDest", "=", 
+          RowBox[{"yTren", "+", 
+           RowBox[{"Which", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"putanje", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}], ",", 
+             RowBox[{"-", "2"}], ",", 
+             RowBox[{
+              RowBox[{"putanje", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}], ",",
+              "2", ",", "True", ",", "0"}], "]"}]}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Part", "[", 
+             RowBox[{
+              RowBox[{"Part", "[", 
+               RowBox[{
+                RowBox[{"cvorovi", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "2"}], 
+               "]"}], ",", "1"}], "]"}], "\[NotEqual]", "\"\<*\>\""}], ",", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{"Part", "[", 
+              RowBox[{
+               RowBox[{"cvorovi", "[", 
+                RowBox[{"[", 
+                 RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "2"}], 
+              "]"}], ",", 
+             RowBox[{"StringJoin", "[", 
+              RowBox[{
+               RowBox[{"putanje", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<T\>\""}], "]"}]}], 
+            "]"}], ",", 
+           RowBox[{
+            RowBox[{"Part", "[", 
+             RowBox[{
+              RowBox[{"Part", "[", 
+               RowBox[{
+                RowBox[{"cvorovi", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "2"}], 
+               "]"}], ",", "1"}], "]"}], "=", 
+            RowBox[{"StringJoin", "[", 
+             RowBox[{
+              RowBox[{"putanje", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<T\>\""}], "]"}]}]}], 
+          "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"roditelji", "[", 
+           RowBox[{"[", 
+            RowBox[{"xDest", ",", "yDest"}], "]"}], "]"}], "=", 
+          RowBox[{"Last", "[", "stek", "]"}]}], ";", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{
+           RowBox[{"djeca", "[", 
+            RowBox[{"[", 
+             RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"xDest", ",", "yDest"}], "}"}]}], "]"}], ";", 
+         RowBox[{"Break", "[", "]"}]}]}], "]"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"putanjaNemoguca", "\[Equal]", "True"}], ",", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", 
+         StyleBox["\[LessEqual]",
+          FontWeight->"Plain"], 
+         RowBox[{"Length", "[", "putanje", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"jeLiPutanjaMoguca", "[", 
+           RowBox[{
+            RowBox[{"putanje", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "False", ",", "xTren", ",", 
+            "yTren"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"putanjaNemoguca", "=", "False"}], ";", 
+           RowBox[{"xDest", "=", 
+            RowBox[{"xTren", "+", 
+             RowBox[{"Which", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"putanje", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}], 
+               ",", "1", ",", 
+               RowBox[{
+                RowBox[{"putanje", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}], 
+               ",", 
+               RowBox[{"-", "1"}], ",", "True", ",", "0"}], "]"}]}]}], ";", 
+           RowBox[{"yDest", "=", 
+            RowBox[{"yTren", "+", 
+             RowBox[{"Which", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"putanje", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}], 
+               ",", 
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{
+                RowBox[{"putanje", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}], 
+               ",", "1", ",", "True", ",", "0"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Part", "[", 
+               RowBox[{
+                RowBox[{"Part", "[", 
+                 RowBox[{
+                  RowBox[{"cvorovi", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "2"}],
+                  "]"}], ",", "1"}], "]"}], "\[NotEqual]", "\"\<*\>\""}], ",", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{
+               RowBox[{"Part", "[", 
+                RowBox[{
+                 RowBox[{"cvorovi", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "2"}], 
+                "]"}], ",", 
+               RowBox[{"putanje", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"Part", "[", 
+               RowBox[{
+                RowBox[{"Part", "[", 
+                 RowBox[{
+                  RowBox[{"cvorovi", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "2"}],
+                  "]"}], ",", "1"}], "]"}], "=", 
+              RowBox[{"putanje", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"roditelji", "[", 
+             RowBox[{"[", 
+              RowBox[{"xDest", ",", "yDest"}], "]"}], "]"}], "=", 
+            RowBox[{"Last", "[", "stek", "]"}]}], ";", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{
+             RowBox[{"djeca", "[", 
+              RowBox[{"[", 
+               RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"xDest", ",", "yDest"}], "}"}]}], "]"}], ";", 
+           RowBox[{"Break", "[", "]"}]}]}], "]"}]}], "]"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"putanjaNemoguca", "\[Equal]", "True"}], ",", 
+      RowBox[{
+       RowBox[{"vrijeme", "++"}], ";", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{
+         RowBox[{"vremena", "[", 
+          RowBox[{"[", 
+           RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], ",", "vrijeme"}], 
+        "]"}], ";", 
+       RowBox[{
+        RowBox[{"bojeCvorova", "[", 
+         RowBox[{"[", 
+          RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "=", "True"}], ";", 
+       RowBox[{"stek", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{"stek", ",", 
+          RowBox[{"-", "1"}]}], "]"}]}], ";", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"genLista", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"xTren", ",", "yTren"}], "}"}], ",", "False"}], "}"}]}], 
+        "]"}]}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"stek", ",", 
+        RowBox[{"{", 
+         RowBox[{"xDest", ",", "yDest"}], "}"}]}], "]"}]}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{
+  3.767277330911479*^9, {3.767363927572935*^9, 3.7673640054794717`*^9}, {
+   3.7673644746034956`*^9, 3.767364498331137*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"20fa79b9-3e14-4f04-97de-7e6c397106b8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cvorovi2", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "\"\<*\>\"", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "m"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7672774601577063`*^9, 3.767277503759783*^9}, {
+   3.767278108432445*^9, 3.7672781157488575`*^9}, {3.7672793937655025`*^9, 
+   3.7672794027355185`*^9}, 3.7672794774128494`*^9},
+ CellLabel->"In[16]:=",ExpressionUUID->"7030166c-5185-40d5-be82-50beb25d99c6"],
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", "m"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"j", "=", "1"}], ",", 
+     RowBox[{"j", "\[LessEqual]", "n"}], ",", 
+     RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"i", ",", "j"}], "}"}], "\[Equal]", "start"}], ",", 
+        RowBox[{"Continue", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"cvorovi2", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "j"}], "]"}], "]"}], "=", 
+       RowBox[{"Switch", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"cvorovi", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"roditelji", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"roditelji", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"FirstPosition", "[", 
+             RowBox[{
+              RowBox[{"djeca", "[", 
+               RowBox[{"[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"roditelji", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"roditelji", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "j"}], "}"}]}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", "\"\<S\>\"", 
+         ",", "\"\<J\>\"", ",", "\"\<J\>\"", ",", "\"\<S\>\"", ",", 
+         "\"\<I\>\"", ",", "\"\<Z\>\"", ",", "\"\<Z\>\"", ",", "\"\<I\>\"", 
+         ",", "\"\<ST\>\"", ",", "\"\<JT\>\"", ",", "\"\<JT\>\"", ",", 
+         "\"\<ST\>\"", ",", "\"\<IT\>\"", ",", "\"\<ZT\>\"", ",", 
+         "\"\<ZT\>\"", ",", "\"\<IT\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", 
+          RowBox[{
+           RowBox[{"cvorovi", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"roditelji", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"roditelji", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "]"}], "<", 
+         RowBox[{
+          RowBox[{"cvorovi", "[", 
+           RowBox[{"[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"roditelji", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"roditelji", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"cvorovi", "[", 
+           RowBox[{"[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"roditelji", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{"roditelji", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "j"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "=", "1"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.767277538485444*^9, 3.767277563507888*^9}, {
+   3.7672780717099805`*^9, 3.767278124360073*^9}, {3.767278390792941*^9, 
+   3.7672784643938704`*^9}, {3.7672785107883515`*^9, 
+   3.7672785581344347`*^9}, {3.7672786093805246`*^9, 3.76727872048392*^9}, {
+   3.767278844207737*^9, 3.7672788499797473`*^9}, {3.7672790181480427`*^9, 
+   3.767279030830865*^9}, {3.7672790890657673`*^9, 3.767279101202589*^9}, {
+   3.767279230807616*^9, 3.767279239730832*^9}, {3.767359466811889*^9, 
+   3.767359484985921*^9}, 3.7673597145247245`*^9, {3.7673597691872206`*^9, 
+   3.7673597812772417`*^9}, {3.767359819372508*^9, 3.7673598394809437`*^9}, {
+   3.767365358912649*^9, 3.7673654175687523`*^9}, {3.767365488049676*^9, 
+   3.7673654894848785`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"f5b063de-7f97-471f-bda6-3aa2b3e45374"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"crtaj", "[", "brojac_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"xStart", "=", 
+       RowBox[{
+        RowBox[{"start", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "+", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"start", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "-", "1"}], ")"}], "*", 
+         "prored"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"yStart", "=", 
+       RowBox[{"m", "+", "1", "-", 
+        RowBox[{"start", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "+", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"m", "-", 
+           RowBox[{"start", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", "prored"}]}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"poligoni", "=", 
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"xStart", ",", "yStart"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"xStart", ",", 
+            RowBox[{"yStart", "+", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xStart", "+", "1"}], ",", 
+            RowBox[{"yStart", "+", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xStart", "+", "1"}], ",", "yStart"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"xStart", ",", "yStart"}], "}"}]}], "}"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"bojePoligona", "=", 
+       RowBox[{"{", "1", "}"}]}], ";", 
+      RowBox[{"cvorovi3", "=", "cvorovi"}], ";", 
+      RowBox[{"zadnjiP", "=", 
+       RowBox[{"{", 
+        RowBox[{"{", "}"}], "}"}]}], ";", 
+      RowBox[{"zavrseniPoligoni", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"p", "=", "1"}], ";", 
+      RowBox[{"i", "=", "2"}], ";", 
+      RowBox[{"kojiPoligon", "=", "1"}], ";", 
+      RowBox[{"stek", "=", 
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1", ",", "5"}], "}"}], "}"}]}], ";", 
+      RowBox[{"krizanja", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"it", ",", "m"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"jt", ",", "n"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"i", "\[LessEqual]", 
+         RowBox[{"Length", "[", "genLista", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"i", "\[Equal]", "brojac"}], ",", 
+            RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"xTren", "=", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"genLista", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+          RowBox[{"yTren", "=", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"genLista", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", 
+          RowBox[{"xMin", "=", 
+           RowBox[{"yTren", "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"yTren", "-", "1"}], ")"}], "*", "prored"}]}]}], ";", 
+          RowBox[{"yMin", "=", 
+           RowBox[{"m", "+", "1", "-", "xTren", "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"m", "-", "xTren"}], ")"}], "*", "prored"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"xRod", "=", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"genLista", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", "-", "1"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"yRod", "=", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"genLista", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", "-", "1"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"xPred", "=", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"i", "\[NotEqual]", "2"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"genLista", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", "-", "2"}], "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", "Null"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"yPred", "=", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"i", "\[NotEqual]", "2"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"genLista", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", "-", "2"}], "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "Null"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"cvorPronadjen", "=", 
+           RowBox[{
+            RowBox[{"genLista", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"rodPronadjen", "=", 
+           RowBox[{
+            RowBox[{"genLista", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", "-", "1"}], "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"predPronadjen", "=", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"i", "\[NotEqual]", "2"}], ",", 
+             RowBox[{
+              RowBox[{"genLista", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", "-", "2"}], "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "Null"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"l", "=", 
+           RowBox[{"cvorovi3", "[", 
+            RowBox[{"[", 
+             RowBox[{"xRod", ",", "yRod"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"trenPutanja", "=", 
+           RowBox[{"If", "[", 
+            RowBox[{"cvorPronadjen", ",", 
+             RowBox[{
+              RowBox[{"l", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "[", 
+              RowBox[{"[", 
+               RowBox[{"l", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", 
+             RowBox[{"cvorovi2", "[", 
+              RowBox[{"[", 
+               RowBox[{"xRod", ",", "yRod"}], "]"}], "]"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"!", 
+             RowBox[{"SameQ", "[", 
+              RowBox[{"xPred", ",", "Null"}], "]"}]}], ",", 
+            RowBox[{"l", "=", 
+             RowBox[{"cvorovi3", "[", 
+              RowBox[{"[", 
+               RowBox[{"xPred", ",", "yPred"}], "]"}], "]"}]}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"rodPutanja", "=", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Or", "[", 
+              RowBox[{
+               RowBox[{"i", "\[Equal]", "2"}], ",", 
+               RowBox[{
+                RowBox[{"!", "cvorPronadjen"}], "&&", 
+                RowBox[{"!", "rodPronadjen"}], "&&", "predPronadjen"}]}], 
+              "]"}], ",", "Null", ",", 
+             RowBox[{"Switch", "[", 
+              RowBox[{"cvorPronadjen", ",", "True", ",", 
+               RowBox[{
+                RowBox[{"l", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "[", 
+                RowBox[{"[", 
+                 RowBox[{"l", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", "False", 
+               ",", 
+               RowBox[{"cvorovi2", "[", 
+                RowBox[{"[", 
+                 RowBox[{"xPred", ",", "yPred"}], "]"}], "]"}]}], "]"}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"!", "cvorPronadjen"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"poligoni", "[", 
+               RowBox[{"[", 
+                RowBox[{
+                 RowBox[{"Last", "[", "stek", "]"}], "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "=", 
+              RowBox[{"Drop", "[", 
+               RowBox[{
+                RowBox[{"poligoni", "[", 
+                 RowBox[{"[", 
+                  RowBox[{
+                   RowBox[{"Last", "[", "stek", "]"}], "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Last", "[", "stek", "]"}], "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", 
+                   RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "-", "1"}]}], "}"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"stek", "=", 
+              RowBox[{"Drop", "[", 
+               RowBox[{"stek", ",", 
+                RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"i", "\[NotEqual]", 
+                 RowBox[{"Length", "[", "genLista", "]"}]}], "&&", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Last", "[", "stek", "]"}], "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "2"}]}], ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"poligoni", "[", 
+                  RowBox[{"[", 
+                   RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "=", 
+                 RowBox[{"Drop", "[", 
+                  RowBox[{
+                   RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", 
+                    RowBox[{
+                    RowBox[{"Last", "[", "stek", "]"}], "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "-", "1"}]}], "}"}]}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"stek", "=", 
+                 RowBox[{"Drop", "[", 
+                  RowBox[{"stek", ",", 
+                   RowBox[{"-", "1"}]}], "]"}]}], ";"}]}], "]"}]}]}], 
+           "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"Implies", "[", 
+             RowBox[{"rodPronadjen", ",", "cvorPronadjen"}], "]"}], ",", 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"cvorPronadjen", "&&", "rodPronadjen", "&&", 
+                RowBox[{"!", "predPronadjen"}]}], ",", 
+               RowBox[{"rodPutanja", "=", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"cvorovi3", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xRod", ",", "yRod"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xRod", ",", "yRod"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{
+                   RowBox[{"cvorovi3", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xRod", ",", "yRod"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xRod", ",", "yRod"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}]}], "]"}], 
+             ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"cvorPronadjen", "&&", 
+                RowBox[{"!", "rodPronadjen"}]}], ",", 
+               RowBox[{
+                RowBox[{"trenPutanja", "=", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"cvorovi3", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], "[", 
+                  RowBox[{"[", 
+                   RowBox[{"++", 
+                    RowBox[{
+                    RowBox[{"cvorovi3", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}]}], ";", 
+                RowBox[{"rodPutanja", "=", 
+                 RowBox[{
+                  RowBox[{"krizanja", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"zavrseniPoligoni", ",", "kojiPoligon"}], "]"}], ";", 
+                RowBox[{"While", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"bojePoligona", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], "\[Equal]", 
+                    "0"}], "||", 
+                   RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], "==", 
+                    RowBox[{"{", "}"}]}]}], ",", 
+                  RowBox[{"kojiPoligon", "--"}]}], "]"}], ";", 
+                RowBox[{"p", "=", 
+                 RowBox[{
+                  RowBox[{"krizanja", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"roditelji", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}]}]}], "]"}], ";", 
+             "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"koordinate", "=", 
+              RowBox[{"Switch", "[", 
+               RowBox[{"trenPutanja", ",", "\"\<S\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}]}], "}"}],
+                 ",", "\"\<I\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", "yMin"}], "}"}]}], "}"}], ",", 
+                "\"\<J\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}], ",", 
+                "\"\<Z\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}], ",", 
+                "\"\<ZT\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "2.2"}], ",", "yMin"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "2.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}], ",", 
+                "\"\<ST\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "-", "1.2"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "-", "1.2"}]}], "}"}]}], "}"}], ",", 
+                "\"\<JT\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "2.2"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "2.2"}]}], "}"}]}], "}"}], ",", 
+                "\"\<IT\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "-", "1.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"xMin", "-", "1.2"}], ",", "yMin"}], "}"}]}], 
+                 "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"SameQ", "[", 
+                RowBox[{"rodPutanja", ",", "Null"}], "]"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"p", "=", 
+                RowBox[{"Switch", "[", 
+                 RowBox[{"cvorPronadjen", ",", "True", ",", 
+                  RowBox[{"Switch", "[", 
+                   RowBox[{
+                   "trenPutanja", ",", "\"\<S\>\"", ",", "3", ",", 
+                    "\"\<J\>\"", ",", "5", ",", "\"\<I\>\"", ",", "4", ",", 
+                    "\"\<Z\>\"", ",", "2"}], "]"}], ",", "False", ",", "3"}], 
+                 "]"}]}], ",", "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"Or", "[", 
+                  RowBox[{
+                   RowBox[{"rodPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                   RowBox[{"rodPutanja", "\[Equal]", "\"\<ST\>\""}]}], "]"}], 
+                 ",", 
+                 RowBox[{"p", "+=", 
+                  RowBox[{"Which", "[", 
+                   RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ST\>\""}]}], 
+                    "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ZT\>\""}]}], 
+                    "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<IT\>\""}]}], 
+                    "]"}], ",", "3"}], "]"}]}], ",", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"rodPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"rodPutanja", "\[Equal]", "\"\<JT\>\""}]}], "]"}],
+                    ",", 
+                   RowBox[{"p", "+=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<JT\>\""}]}], 
+                    "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<IT\>\""}]}], 
+                    "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ZT\>\""}]}], 
+                    "]"}], ",", "3"}], "]"}]}], ",", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"rodPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"rodPutanja", "\[Equal]", "\"\<ZT\>\""}]}], "]"}],
+                     ",", 
+                    RowBox[{"p", "+=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ZT\>\""}]}], 
+                    "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<JT\>\""}]}], 
+                    "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ST\>\""}]}], 
+                    "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"rodPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"rodPutanja", "\[Equal]", "\"\<IT\>\""}]}], "]"}],
+                     ",", 
+                    RowBox[{"p", "+=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<IT\>\""}]}], 
+                    "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ST\>\""}]}], 
+                    "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<JT\>\""}]}], 
+                    "]"}], ",", "3"}], "]"}]}]}], "]"}]}], "]"}]}], "]"}]}], 
+                "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"For", "[", 
+              RowBox[{
+               RowBox[{"j", "=", "p"}], ",", 
+               RowBox[{"j", "<", 
+                RowBox[{"p", "+", 
+                 RowBox[{"Length", "[", "koordinate", "]"}]}]}], ",", 
+               RowBox[{"j", "++"}], ",", 
+               RowBox[{
+                RowBox[{"poligoni", "[", 
+                 RowBox[{"[", "kojiPoligon", "]"}], "]"}], "=", 
+                RowBox[{"Insert", "[", 
+                 RowBox[{
+                  RowBox[{"poligoni", "[", 
+                   RowBox[{"[", "kojiPoligon", "]"}], "]"}], ",", 
+                  RowBox[{"koordinate", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"j", "-", "p", "+", "1"}], "]"}], "]"}], ",", 
+                  "j"}], "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{"cvorPronadjen", ",", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"stek", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"kojiPoligon", ",", "p", ",", 
+                   RowBox[{"Length", "[", "koordinate", "]"}]}], "}"}]}], 
+                "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringLength", "[", "trenPutanja", "]"}], "\[Equal]",
+                 "2"}], ",", 
+               RowBox[{
+                RowBox[{"kojiPoligon", "=", 
+                 RowBox[{
+                  RowBox[{"Length", "[", "poligoni", "]"}], "+", "1"}]}], ";", 
+                RowBox[{"p", "=", "2"}], ";", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"zadnjiP", ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "\"\<*\>\""}], "}"}]}], "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"bojePoligona", ",", 
+                  RowBox[{"Switch", "[", 
+                   RowBox[{
+                   "cvorPronadjen", ",", "True", ",", "1", ",", "False", ",", 
+                    "0"}], "]"}]}], "]"}], ";", 
+                RowBox[{"If", "[", 
+                 RowBox[{"cvorPronadjen", ",", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"stek", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"kojiPoligon", ",", "1", ",", "7"}], "}"}]}], 
+                   "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"Switch", "[", 
+                 RowBox[{"trenPutanja", ",", "\"\<ZT\>\"", ",", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"poligoni", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1.2"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1.2"}], ",", "yMin"}], "}"}]}], 
+                    "}"}]}], "]"}], ",", "\"\<ST\>\"", ",", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"poligoni", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "-", "0.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "-", "0.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "-", "0.2"}]}], "}"}]}], "}"}]}], "]"}], 
+                  ",", "\"\<JT\>\"", ",", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"poligoni", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1.2"}]}], "}"}]}], "}"}]}], "]"}], 
+                  ",", "\"\<IT\>\"", ",", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"poligoni", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "0.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "0.2"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "0.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}]}], "]"}]}], 
+                 "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"cvorPronadjen", "&&", 
+                RowBox[{
+                 RowBox[{"Length", "[", 
+                  RowBox[{
+                   RowBox[{"cvorovi3", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], "]"}], "\[NotEqual]", 
+                 "1"}]}], ",", 
+               RowBox[{
+                RowBox[{"krizanja", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "=", 
+                RowBox[{"{", 
+                 RowBox[{"trenPutanja", ",", "p"}], "}"}]}]}], "]"}], ";", 
+             "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"!", "cvorPronadjen"}], "&&", 
+                RowBox[{
+                 RowBox[{"Length", "[", 
+                  RowBox[{
+                   RowBox[{"cvorovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], "]"}], "\[NotEqual]", 
+                 "1"}]}], ",", 
+               RowBox[{
+                RowBox[{"mergePovi", "=", 
+                 RowBox[{"{", "}"}]}], ";", 
+                RowBox[{"mergePutanje", "=", 
+                 RowBox[{"{", "}"}]}], ";", 
+                RowBox[{"For", "[", 
+                 RowBox[{
+                  RowBox[{"k", "=", "1"}], ",", 
+                  RowBox[{"k", "\[LessEqual]", 
+                   RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    RowBox[{"cvorovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}], "-", "1"}]}], ",", 
+                  RowBox[{"k", "++"}], ",", 
+                  RowBox[{
+                   RowBox[{"AppendTo", "[", 
+                    RowBox[{"mergePutanje", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"cvorovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "[", 
+                    RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ST\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"mergeP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ST\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ZT\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<IT\>\""}]}], "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<JT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"mergeP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<JT\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<IT\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ZT\>\""}]}], "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ZT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"mergeP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ZT\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<JT\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ST\>\""}]}], "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<IT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"mergeP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<IT\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ST\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", 
+                    "\"\<JT\>\""}]}], "]"}], ",", "3"}], "]"}]}]}], "]"}]}], 
+                    "]"}]}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"AppendTo", "[", 
+                    RowBox[{"mergePovi", ",", "mergeP"}], "]"}]}]}], "]"}], 
+                ";", 
+                RowBox[{"slijedRastuci", "=", "True"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"For", "[", 
+                 RowBox[{
+                  RowBox[{"k", "=", "1"}], ",", 
+                  RowBox[{"k", "\[LessEqual]", 
+                   RowBox[{
+                    RowBox[{"Length", "[", "mergePovi", "]"}], "-", "1"}]}], 
+                  ",", 
+                  RowBox[{"k", "++"}], ",", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"mergePovi", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], ">", 
+                    RowBox[{"mergePovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"k", "+", "1"}], "]"}], "]"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"slijedRastuci", "=", "False"}], ";", 
+                    RowBox[{"Break", "[", "]"}]}]}], "]"}]}], "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"povPutanja", "=", 
+                 RowBox[{"cvorovi2", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"Or", "[", 
+                   RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ST\>\""}]}], 
+                   "]"}], ",", 
+                  RowBox[{"moguceP", "=", 
+                   RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<ST\>\""}]}], "]"}],
+                     ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<ZT\>\""}]}], "]"}],
+                     ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<IT\>\""}]}], "]"}],
+                     ",", "3"}], "]"}]}], ",", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<JT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"moguceP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<JT\>\""}]}], "]"}],
+                     ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<IT\>\""}]}], "]"}],
+                     ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<ZT\>\""}]}], "]"}],
+                     ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<ZT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"moguceP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<ZT\>\""}]}], "]"}],
+                     ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<JT\>\""}]}], "]"}],
+                     ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<ST\>\""}]}], "]"}],
+                     ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"trenPutanja", "\[Equal]", "\"\<IT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"moguceP", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<IT\>\""}]}], "]"}],
+                     ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<ST\>\""}]}], "]"}],
+                     ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"povPutanja", "\[Equal]", "\"\<JT\>\""}]}], "]"}],
+                     ",", "3"}], "]"}]}]}], "]"}]}], "]"}]}], "]"}]}], "]"}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{"staroP", "=", "p"}], ";", 
+                RowBox[{"zam", "=", "True"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"For", "[", 
+                 RowBox[{
+                  RowBox[{"k", "=", "1"}], ",", 
+                  RowBox[{"k", "\[LessEqual]", 
+                   RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    RowBox[{"cvorovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}], "-", "1"}]}], ",", 
+                  RowBox[{"k", "++"}], ",", 
+                  RowBox[{
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"k", "\[Equal]", "3"}], ",", 
+                    RowBox[{"Break", "[", "]"}]}], "]"}], ";", 
+                   RowBox[{"If", "[", 
+                    RowBox[{"slijedRastuci", ",", 
+                    RowBox[{
+                    RowBox[{"mergeP", "=", 
+                    RowBox[{"mergePovi", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}]}], ";", 
+                    RowBox[{"mergePutanja", "=", 
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{"zam", ",", 
+                    RowBox[{
+                    RowBox[{"zam", "=", "False"}], ";", 
+                    RowBox[{"tmp", "=", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}]}], ";", 
+                    RowBox[{
+                    RowBox[{"zavrseniPoligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Length", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "=", 
+                    RowBox[{"zavrseniPoligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"Length", "[", "zavrseniPoligoni", "]"}], "-", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    RowBox[{"cvorovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}], "+", "2"}], "]"}], 
+                    "]"}]}], ";", 
+                    RowBox[{
+                    RowBox[{"zavrseniPoligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"Length", "[", "zavrseniPoligoni", "]"}], "-", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    RowBox[{"cvorovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"xTren", ",", "yTren"}], "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}], "+", "2"}], "]"}], 
+                    "]"}], "=", "tmp"}]}]}], "]"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mergeP", "=", 
+                    RowBox[{"mergePovi", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"3", "-", "k"}], "]"}], "]"}]}], ";", 
+                    RowBox[{"mergePutanja", "=", 
+                    RowBox[{"mergePutanje", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"3", "-", "k"}], "]"}], "]"}]}]}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"pomakPok", "=", "False"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"mergeP", "<", "moguceP"}], ",", 
+                    RowBox[{"pomakPok", "=", "True"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"mergeP", "+=", "p"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<ST\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"lom", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<JT\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ZT\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<IT\>\""}]}], "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<JT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"lom", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ST\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<IT\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ZT\>\""}]}], "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<ZT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"lom", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<I\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<IT\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<JT\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ST\>\""}]}], "]"}], ",", "3"}], "]"}]}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                    RowBox[{"mergePutanja", "\[Equal]", "\"\<IT\>\""}]}], 
+                    "]"}], ",", 
+                    RowBox[{"lom", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<Z\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ZT\>\""}]}], "]"}], ",", "2", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<S\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<ST\>\""}]}], "]"}], ",", "1", ",", 
+                    RowBox[{"Or", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<J\>\""}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+                    "\"\<JT\>\""}]}], "]"}], ",", "3"}], "]"}]}]}], "]"}]}], 
+                    "]"}]}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"StringLength", "[", "mergePutanja", "]"}], 
+                    "\[Equal]", "2"}], ",", 
+                    RowBox[{
+                    RowBox[{"p", "+=", "2"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{"pomakPok", ",", 
+                    RowBox[{"staroP", "+=", "2"}]}], "]"}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"mergeP", "-", "1"}]}], "}"}]}], "]"}], ",", 
+                    RowBox[{"Switch", "[", 
+                    RowBox[{"mergePutanja", ",", "\"\<ST\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1.2"}]}], "}"}]}], "}"}], ",", 
+                    "\"\<IT\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1.2"}], ",", "yMin"}], "}"}]}], 
+                    "}"}], ",", "\"\<JT\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "-", "0.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "-", "0.2"}]}], "}"}]}], "}"}], ",", 
+                    "\"\<ZT\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "0.2"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "0.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}]}], "]"}], 
+                    ",", 
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"mergeP", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], "]"}]}], 
+                    "}"}]}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "lom", "-", "1"}]}], 
+                    "}"}]}], "]"}], ",", 
+                    RowBox[{"Switch", "[", 
+                    RowBox[{"mergePutanja", ",", "\"\<ST\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "2.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "2.2"}]}], "}"}]}], "}"}], ",", 
+                    "\"\<IT\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "2.2"}], ",", "yMin"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "2.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}], ",", 
+                    "\"\<JT\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "-", "1.2"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "-", "1.2"}]}], "}"}]}], "}"}], ",", 
+                    "\"\<ZT\>\"", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "1.2"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "-", "1.2"}], ",", "yMin"}], "}"}]}], 
+                    "}"}]}], "]"}], ",", 
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "lom"}], ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "]"}]}], "}"}]}], "]"}]}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"zavrseniPoligoni", "=", 
+                    RowBox[{"Drop", "[", 
+                    RowBox[{"zavrseniPoligoni", ",", 
+                    RowBox[{"-", "1"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+                    ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"p", "+=", 
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "]"}], "-", "1"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{"pomakPok", ",", 
+                    RowBox[{"staroP", "+=", 
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "]"}], "-", "1"}]}]}], "]"}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"mergeP", "-", "1"}]}], "}"}]}], "]"}], ",", 
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "lom"}], ",", 
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "]"}], "-", "1"}]}], "}"}]}], "]"}], ",", 
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"zadnjiP", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "lom", "-", "1"}]}], 
+                    "}"}]}], "]"}], ",", 
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"mergeP", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", "kojiPoligon", "]"}], "]"}], "]"}]}], 
+                    "}"}]}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"poligoni", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"Last", "[", "zavrseniPoligoni", "]"}], "]"}], 
+                    "]"}], "=", 
+                    RowBox[{"{", "}"}]}], ";", 
+                    RowBox[{"zavrseniPoligoni", "=", 
+                    RowBox[{"Drop", "[", 
+                    RowBox[{"zavrseniPoligoni", ",", 
+                    RowBox[{"-", "1"}]}], "]"}]}]}]}], "\[IndentingNewLine]", 
+                    "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"p", "=", "staroP"}], ";"}]}], "\[IndentingNewLine]", 
+              "]"}]}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"kojiJeBioPoligion", "=", "kojiPoligon"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"kojiPoligon", "=", 
+              RowBox[{
+               RowBox[{"Length", "[", "poligoni", "]"}], "+", "1"}]}], ";", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"bojePoligona", ",", "0"}], "]"}], ";", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"zadnjiP", ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "\"\<*\>\""}], "}"}]}], "]"}], ";", 
+             RowBox[{"p", "=", "1"}], ";", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"poligoni", ",", 
+               RowBox[{"Which", "[", 
+                RowBox[{
+                 RowBox[{"Or", "[", 
+                  RowBox[{
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<S\>\""}], ",", 
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<ST\>\""}]}], "]"}],
+                  ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}]}], "}"}], ",", 
+                 RowBox[{"Or", "[", 
+                  RowBox[{
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<J\>\""}], ",", 
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<JT\>\""}]}], "]"}],
+                  ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}], ",", 
+                 RowBox[{"Or", "[", 
+                  RowBox[{
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<I\>\""}], ",", 
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<IT\>\""}]}], "]"}],
+                  ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}]}], "}"}], ",", 
+                 RowBox[{"Or", "[", 
+                  RowBox[{
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<Z\>\""}], ",", 
+                   RowBox[{"trenPutanja", "\[Equal]", "\"\<ZT\>\""}]}], "]"}],
+                  ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "yMin"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", 
+                    RowBox[{"yMin", "+", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"xMin", "+", "1"}], ",", "yMin"}], "}"}]}], 
+                  "}"}]}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+          ";"}], 
+         RowBox[{"(*", 
+          RowBox[{"kraj", " ", "if", " ", "implies"}], "*)"}], ";", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"!", "cvorPronadjen"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"zadnjiP", "[", 
+               RowBox[{"[", "kojiPoligon", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "=", "p"}], ";", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"zadnjiP", "[", 
+               RowBox[{"[", "kojiPoligon", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "=", "trenPutanja"}]}]}], "]"}],
+          ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+     RowBox[{"(*", 
+      RowBox[{"kraj", " ", "for", " ", "petlje"}], "*)"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "Null", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.767279586238641*^9, 3.767279668918786*^9}, {
+   3.7672798334834747`*^9, 3.76727984190749*^9}, {3.7672798873971696`*^9, 
+   3.7672799135428157`*^9}, {3.767280100243943*^9, 3.767280118090375*^9}, {
+   3.767280328253944*^9, 3.7672803849288435`*^9}, {3.7672806808693633`*^9, 
+   3.7672807628943076`*^9}, {3.767281120368935*^9, 3.767281182644245*^9}, {
+   3.7672812347795362`*^9, 3.7672812446231537`*^9}, {3.7672812789276137`*^9, 
+   3.7672813021092544`*^9}, {3.7672813356493134`*^9, 3.767281377301387*^9}, {
+   3.7672814306378803`*^9, 3.767281432650284*^9}, {3.7672814824143715`*^9, 
+   3.767281496625996*^9}, {3.767281666260694*^9, 3.767281699020752*^9}, {
+   3.767281764556467*^9, 3.7672817998749285`*^9}, {3.767282006372492*^9, 
+   3.7672821158222837`*^9}, {3.767282182450001*^9, 3.7672821998908315`*^9}, 
+   3.7672822899029894`*^9, {3.767282325065451*^9, 3.767282372083934*^9}, 
+   3.7672824452792625`*^9, 3.767282562326268*^9, {3.7672827139741344`*^9, 
+   3.7672827394489794`*^9}, {3.767282817246316*^9, 3.767282840318756*^9}, {
+   3.76728287652642*^9, 3.7672829894706182`*^9}, 3.767283142475687*^9, 
+   3.767283182146557*^9, 3.767283275955121*^9, {3.767283351568454*^9, 
+   3.767283359789668*^9}, {3.7672838305828953`*^9, 3.7672838402549124`*^9}, {
+   3.7672843081153345`*^9, 3.7672843568186197`*^9}, {3.767284470340019*^9, 
+   3.7672844881792507`*^9}, {3.767284696314816*^9, 3.76728469867042*^9}, {
+   3.767284728794073*^9, 3.767284805000207*^9}, {3.7672849043411818`*^9, 
+   3.767284917164404*^9}, {3.7672851271875725`*^9, 3.767285129043976*^9}, {
+   3.767285364229989*^9, 3.7672853694091983`*^9}, {3.767285418096884*^9, 
+   3.767285480434593*^9}, 3.7672858496716423`*^9, {3.767285886752907*^9, 
+   3.7672860578540077`*^9}, {3.767286102158085*^9, 3.7672861230153217`*^9}, {
+   3.767286175462614*^9, 3.7672861837774286`*^9}, {3.767286236458721*^9, 
+   3.767286268672778*^9}, {3.767286791570096*^9, 3.767286794487301*^9}, {
+   3.767287608593131*^9, 3.767287682974062*^9}, {3.7672887577119503`*^9, 
+   3.767288790425207*^9}, {3.767288858300926*^9, 3.767288863183735*^9}, {
+   3.7672890625988855`*^9, 3.7672890644396887`*^9}, {3.7672898083737955`*^9, 
+   3.767289834628641*^9}, {3.76728991348678*^9, 3.767289999926532*^9}, 
+   3.7672900346833925`*^9, {3.7672901233383484`*^9, 3.7672901239779496`*^9}, {
+   3.767290453372528*^9, 3.767290542245884*^9}, {3.767290582727955*^9, 
+   3.767290584865159*^9}, {3.7672906647372994`*^9, 3.7672907604122677`*^9}, {
+   3.7672908789880753`*^9, 3.767290888816093*^9}, {3.7672910223835278`*^9, 
+   3.767291026579935*^9}, {3.767291258287142*^9, 3.7672912600343447`*^9}, {
+   3.76729133663048*^9, 3.767291396830985*^9}, {3.7672914993699656`*^9, 
+   3.767291501023568*^9}, {3.7672915330660243`*^9, 3.767291621159379*^9}, {
+   3.7672920305352983`*^9, 3.767292035932908*^9}, {3.7672923425358467`*^9, 
+   3.7672923442986493`*^9}, {3.7672925273337708`*^9, 3.767292570982648*^9}, {
+   3.767292603789505*^9, 3.767292627595147*^9}, {3.7672926711348233`*^9, 
+   3.7672927058916845`*^9}, 3.7672928446383286`*^9, {3.7672928862904015`*^9, 
+   3.7672928906272087`*^9}, {3.7672932159813805`*^9, 3.767293241939826*^9}, 
+   3.767293286072304*^9, {3.7672933335119867`*^9, 3.767293337053193*^9}, {
+   3.7672933797816677`*^9, 3.7672934097649207`*^9}, 3.7672937743843613`*^9, {
+   3.7672938429464817`*^9, 3.767293865693722*^9}, 3.767293897673778*^9, {
+   3.767293954551478*^9, 3.7672939781543193`*^9}, {3.767294032192814*^9, 
+   3.767294055842456*^9}, {3.76729411521616*^9, 3.7672941287569838`*^9}, {
+   3.7672941610802402`*^9, 3.7672941633734446`*^9}, {3.767294197381504*^9, 
+   3.767294202981914*^9}, {3.767294247348392*^9, 3.767294251888*^9}, {
+   3.7672943159105124`*^9, 3.767294330418538*^9}, {3.7672944418963337`*^9, 
+   3.7672944796484003`*^9}, {3.767294548475721*^9, 3.767294549567723*^9}, {
+   3.767294606117822*^9, 3.7672946272090592`*^9}, {3.767294959115242*^9, 
+   3.76729504340219*^9}, {3.7672951085167046`*^9, 3.767295109795907*^9}, {
+   3.767295188435645*^9, 3.7672952181068974`*^9}, {3.7672952969806356`*^9, 
+   3.7672953044530487`*^9}, {3.7672959674850144`*^9, 
+   3.7672960181383038`*^9}, {3.7672960739240017`*^9, 3.767296080101612*^9}, {
+   3.767296229908675*^9, 3.767296257941925*^9}, {3.7673564214525404`*^9, 
+   3.767356453697797*^9}, {3.767366767505898*^9, 3.767366800505786*^9}, {
+   3.767445796242792*^9, 3.767445849579286*^9}, {3.7674501292836237`*^9, 
+   3.7674501328560305`*^9}, {3.7674501756157055`*^9, 3.767450200279349*^9}, {
+   3.7674503683228436`*^9, 3.7674503870584764`*^9}, {3.767450420270935*^9, 
+   3.7674504246233425`*^9}, {3.7674505199551105`*^9, 
+   3.7674505249471188`*^9}, {3.7674506745981817`*^9, 
+   3.7674507838139734`*^9}, {3.7674508337496614`*^9, 3.7674508453092813`*^9}, 
+   3.7674511014929314`*^9, {3.767451470108979*^9, 3.76745147638019*^9}, 
+   3.7674515699803543`*^9, {3.7674519171433644`*^9, 3.767451935972597*^9}, {
+   3.767452185635436*^9, 3.767452185744636*^9}, {3.7674522839312086`*^9, 
+   3.767452284243209*^9}, {3.767454047188509*^9, 3.767454061524934*^9}, 
+   3.767454220707614*^9, {3.7674543679874725`*^9, 3.767454449201215*^9}, {
+   3.767454500681305*^9, 3.7674545320529604`*^9}, 3.7674545701170273`*^9, 
+   3.7674546256063247`*^9, {3.7674550107398014`*^9, 3.7674550182902145`*^9}, {
+   3.7674551549932547`*^9, 3.767455227018581*^9}, 3.7674555990324345`*^9, {
+   3.767455769696734*^9, 3.7674557840487595`*^9}, {3.7674558397564573`*^9, 
+   3.767455916399392*^9}, {3.767455950267051*^9, 3.7674560261767845`*^9}, {
+   3.767456058718442*^9, 3.767456127779763*^9}, {3.7674561791818533`*^9, 
+   3.7674563052768745`*^9}, {3.7674564263174877`*^9, 
+   3.7674564264266877`*^9}, {3.7674566810347347`*^9, 3.767456692266754*^9}, {
+   3.7674568366762085`*^9, 3.7674568368166084`*^9}, {3.7674571777084074`*^9, 
+   3.7674572013736486`*^9}, {3.767457240748118*^9, 3.7674572422301207`*^9}, 
+   3.767457382536767*^9, {3.7674574702713213`*^9, 3.767457506042184*^9}, {
+   3.7674577518830156`*^9, 3.767457759495829*^9}, {3.767519430585009*^9, 
+   3.767519464140668*^9}, {3.76751952206357*^9, 3.7675195792220707`*^9}, {
+   3.7675196385021744`*^9, 3.7675197296219344`*^9}, {3.767521339855163*^9, 
+   3.7675213679820127`*^9}, {3.76752140629248*^9, 3.7675214068072805`*^9}, {
+   3.7675224545831213`*^9, 3.7675224655811405`*^9}, {3.7675225084656157`*^9, 
+   3.7675225371696663`*^9}, {3.767522583860548*^9, 3.767522646369858*^9}, 
+   3.767522917842735*^9, {3.767522972614431*^9, 3.767523008650494*^9}, {
+   3.7675231106278734`*^9, 3.7675231327643123`*^9}, {3.767523301182208*^9, 
+   3.767523373379135*^9}, {3.767523457853283*^9, 3.767523460021687*^9}, {
+   3.767523970030583*^9, 3.7675239851158094`*^9}, {3.7675242278366356`*^9, 
+   3.767524229646239*^9}, {3.7675265878703814`*^9, 3.7675267545410748`*^9}, {
+   3.76752687169728*^9, 3.767526918622163*^9}, {3.767526961459838*^9, 
+   3.7675269771534653`*^9}, {3.767527212823079*^9, 3.7675273962950015`*^9}, {
+   3.7675274471198907`*^9, 3.7675274547795043`*^9}, {3.767527951499977*^9, 
+   3.767527951780777*^9}, {3.7675279911240463`*^9, 3.7675280157252893`*^9}, {
+   3.767528049436949*^9, 3.767528093460226*^9}, {3.7675282468708954`*^9, 
+   3.7675282546241093`*^9}, {3.767528355431486*^9, 3.7675283876767426`*^9}, {
+   3.767528712360113*^9, 3.767528778176629*^9}, {3.767529054047513*^9, 
+   3.7675290828763638`*^9}, 3.7675291140140185`*^9, {3.7675293098255625`*^9, 
+   3.7675293278279943`*^9}, {3.767529358326048*^9, 3.7675293881064997`*^9}, {
+   3.767529443689398*^9, 3.7675294595702257`*^9}, {3.7675294896782784`*^9, 
+   3.7675295031879025`*^9}, 3.767529567881216*^9, {3.7675296509357615`*^9, 
+   3.767529651419362*^9}, {3.767530061996484*^9, 3.767530067440893*^9}, {
+   3.767531120024742*^9, 3.767531122661147*^9}, {3.7675311663256235`*^9, 
+   3.767531229614935*^9}, 3.767531282842228*^9, {3.7675313143386836`*^9, 
+   3.767531342808734*^9}, {3.76753280960131*^9, 3.767532810818112*^9}, 
+   3.767532841612566*^9, {3.767532903622675*^9, 3.7675329050734777`*^9}, {
+   3.767533162006329*^9, 3.767533172723548*^9}, {3.7675332030968013`*^9, 
+   3.7675332066224074`*^9}, {3.7675332461996765`*^9, 3.767533253282089*^9}, {
+   3.767536696868021*^9, 3.7675367295812783`*^9}, 3.767541380183447*^9, {
+   3.7675414969496517`*^9, 3.76754152997491*^9}, {3.767545080139144*^9, 
+   3.767545172159272*^9}, {3.7675452107593265`*^9, 3.7675452265993485`*^9}, {
+   3.7675453435695124`*^9, 3.7675454893797164`*^9}, {3.767545532419777*^9, 
+   3.7675455606798162`*^9}, {3.7675456814399853`*^9, 
+   3.7675457626400995`*^9}, {3.7675458978502884`*^9, 3.767546009570445*^9}, {
+   3.7675463544809275`*^9, 3.767546415221013*^9}, 3.767546449561061*^9, 
+   3.7675464957811255`*^9, 3.7675465310311747`*^9, {3.767546621811302*^9, 
+   3.7675467880685463`*^9}, 3.7675470305488853`*^9, {3.7675470613089285`*^9, 
+   3.76754706235893*^9}, {3.7675473961593976`*^9, 3.767547443129463*^9}, {
+   3.76754749786954*^9, 3.767547535639593*^9}, {3.7675477219698534`*^9, 
+   3.767547745839887*^9}, {3.767547971300203*^9, 3.7675480433403034`*^9}, {
+   3.767548455111906*^9, 3.767548484031946*^9}, {3.7675486205621376`*^9, 
+   3.76754862216214*^9}, {3.7675493706531878`*^9, 3.767549370783188*^9}, {
+   3.7675498510138597`*^9, 3.7675498569838686`*^9}, {3.7675499812240424`*^9, 
+   3.7675499851840477`*^9}, {3.7675501562042875`*^9, 
+   3.7675501799743204`*^9}, {3.76755022262438*^9, 3.7675502236843815`*^9}, {
+   3.7675502576644297`*^9, 3.7675502584844303`*^9}, {3.7675505628848567`*^9, 
+   3.7675505634348574`*^9}, 3.767551271055848*^9, 3.767551581836283*^9, 
+   3.767551711016464*^9, 3.7675518279466276`*^9, {3.767551867706683*^9, 
+   3.767551877566697*^9}, {3.7675519243067627`*^9, 3.7675519899768543`*^9}, {
+   3.767552047636935*^9, 3.767552100347009*^9}, {3.767553456588908*^9, 
+   3.7675534697189264`*^9}, {3.7675536321291533`*^9, 
+   3.7675536478491755`*^9}, {3.7675540925797987`*^9, 3.76755410098981*^9}, {
+   3.767554293320079*^9, 3.767554323620122*^9}, {3.767554371520189*^9, 
+   3.7675544080402403`*^9}, {3.7675544562303076`*^9, 
+   3.7675544564603076`*^9}, {3.7675545005403695`*^9, 
+   3.7675545007103696`*^9}, {3.7675549564010077`*^9, 3.7675549768710365`*^9}, 
+   3.767555870042287*^9, {3.767555912992347*^9, 3.7675559537324038`*^9}, {
+   3.7675839283226757`*^9, 3.767583939822692*^9}, 3.767583971712737*^9, {
+   3.7675841000129166`*^9, 3.7675841001029167`*^9}, {3.767584171973017*^9, 
+   3.767584175603022*^9}, {3.7675842531931305`*^9, 3.767584253293131*^9}, 
+   3.7675848380439496`*^9, {3.7675848908240232`*^9, 3.767584900674037*^9}, {
+   3.767584934134084*^9, 3.767584937694089*^9}, {3.7675850104141912`*^9, 
+   3.7675851281343555`*^9}, 3.767585179304427*^9, {3.767585244784519*^9, 
+   3.7675853321846414`*^9}, {3.767585391534724*^9, 3.767585411074752*^9}, {
+   3.7675856993451557`*^9, 3.767585699475156*^9}, {3.767585736385207*^9, 
+   3.7675857814052706`*^9}, {3.767586156195795*^9, 3.7675861564157953`*^9}, {
+   3.7675863821061115`*^9, 3.767586382636112*^9}, {3.7675864271161747`*^9, 
+   3.767586469796234*^9}, {3.7675865106062913`*^9, 3.7675865219163074`*^9}, {
+   3.76758659509641*^9, 3.767586601096418*^9}, {3.767586685566536*^9, 
+   3.767586699106555*^9}, {3.7675868636867857`*^9, 3.7675868742468004`*^9}, {
+   3.7675869287268763`*^9, 3.76758695270691*^9}, {3.7675869889069605`*^9, 
+   3.76758700969699*^9}, {3.7675874829376526`*^9, 3.767587522457708*^9}, {
+   3.7675878815882106`*^9, 3.767587881768211*^9}, {3.767588703739362*^9, 
+   3.767588734949405*^9}, {3.767588844653586*^9, 3.7675888556360054`*^9}, {
+   3.7675889621997924`*^9, 3.767588987113036*^9}, {3.767589065518774*^9, 
+   3.7675891883377895`*^9}, {3.76758967828785*^9, 3.7675897142303133`*^9}, {
+   3.7675899363903036`*^9, 3.7675899368583045`*^9}, {3.7675903673410606`*^9, 
+   3.767590368089862*^9}, {3.7675909891425524`*^9, 3.767590989688554*^9}, {
+   3.767592045982009*^9, 3.7675920463252096`*^9}, {3.7675921927626667`*^9, 
+   3.767592208409494*^9}, {3.767592553809701*^9, 3.767592740713629*^9}, {
+   3.7675927767808924`*^9, 3.7675927876853113`*^9}, {3.76759291206433*^9, 
+   3.7675929361663723`*^9}, {3.7675930834306307`*^9, 
+   3.7675930877986383`*^9}, {3.7675931418527336`*^9, 
+   3.7675931423051343`*^9}, {3.767593183551607*^9, 3.7675931871864133`*^9}, {
+   3.767593383138357*^9, 3.767593437239252*^9}, {3.767593516019391*^9, 
+   3.7675935442710404`*^9}, {3.7676023055527515`*^9, 
+   3.7676023636628537`*^9}, {3.767602719125078*^9, 3.7676028060328307`*^9}, {
+   3.767603036726036*^9, 3.767603116083375*^9}, {3.7676031613078547`*^9, 
+   3.7676033359813614`*^9}, {3.767603448535559*^9, 3.767603463636386*^9}, {
+   3.7676034980032463`*^9, 3.7676035130104723`*^9}, {3.7676035814789925`*^9, 
+   3.767603595269417*^9}, {3.767603662489935*^9, 3.7676036995088*^9}, {
+   3.767603808225391*^9, 3.767603809286193*^9}, {3.7676041615504117`*^9, 
+   3.7676041847788525`*^9}, {3.767604433334089*^9, 3.7676044583877325`*^9}, {
+   3.7676044986982036`*^9, 3.767604574139936*^9}, {3.767604653606476*^9, 
+   3.7676046686605024`*^9}, {3.7676047367702217`*^9, 3.767604765318272*^9}, {
+   3.767604814879559*^9, 3.7676048466568146`*^9}, {3.7676049187601414`*^9, 
+   3.7676049526122007`*^9}, 3.767605028334734*^9, {3.76760520263384*^9, 
+   3.7676052095758524`*^9}, {3.767605246095516*^9, 3.767605284674384*^9}, {
+   3.767605452327879*^9, 3.767605510843581*^9}, {3.7676055807005043`*^9, 
+   3.7676055975329337`*^9}, {3.767605653833432*^9, 3.7676056789806767`*^9}, {
+   3.7676057714020395`*^9, 3.767605809450506*^9}, {3.7676058449249687`*^9, 
+   3.767605850930979*^9}, {3.767606469830866*^9, 3.7676064719056697`*^9}, {
+   3.7676065602018247`*^9, 3.7676065698270416`*^9}, {3.76760702444304*^9, 
+   3.767607032461454*^9}, {3.7676102067272034`*^9, 3.767610221515049*^9}, {
+   3.7676107898605566`*^9, 3.7676107951268578`*^9}, {3.767610848707922*^9, 
+   3.7676108560543423`*^9}, {3.767610898109748*^9, 3.7676110203127375`*^9}, {
+   3.767611068561497*^9, 3.767611224942442*^9}, {3.7676112602934637`*^9, 
+   3.7676113003137527`*^9}, 3.7676114499183097`*^9, {3.7676114877564735`*^9, 
+   3.767611489890596*^9}, {3.767611545836796*^9, 3.7676115612336764`*^9}, {
+   3.767668351023263*^9, 3.767668352786066*^9}, {3.7676684496934366`*^9, 
+   3.7676684673994675`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"bd5dc1b1-f427-471c-b186-ba834ea03579"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"graph", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"EdgeForm", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Thickness", "[", "Tiny", "]"}], ",", "Black"}], "}"}], 
+          "]"}], ",", "LightGray", ",", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"i", "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"i", "-", "1"}], ")"}], "*", "prored"}]}], ",", 
+             RowBox[{"j", "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"j", "-", "1"}], ")"}], "*", "prored"}]}]}], "}"}], 
+           ",", 
+           RowBox[{"RoundingRadius", "\[Rule]", "0.1"}]}], "]"}]}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "n"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "m"}], "}"}]}], "]"}], ",", 
+     RowBox[{"Background", "\[Rule]", "LightBlue"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7676052735515647`*^9, 3.7676052764687696`*^9}, {
+  3.767668603618907*^9, 3.7676686040557075`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"57dced11-24b5-4e19-b7ff-d47662d9efea"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"crtaj", "[", "brojac", "]"}], "]"}]], "Input",
+ CellLabel->"In[20]:=",ExpressionUUID->"9976bfc0-35c1-423f-9934-c06481581a29"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   $CellContext`crtaj[$CellContext`brojac], StandardForm],
+  ImageSizeCache->{28., {0., 9.}}]], "Output",
+ CellChangeTimes->{
+  3.7672797051420493`*^9, 3.767296477761911*^9, 3.7672966305017796`*^9, 
+   3.767355858525552*^9, 3.767363720357771*^9, 3.767364220588249*^9, 
+   3.767364367649708*^9, 3.7673645077067537`*^9, {3.767364683285062*^9, 
+   3.7673646983078885`*^9}, 3.7673648678237867`*^9, 3.76736585105048*^9, 
+   3.7673659328861604`*^9, 3.767366024558404*^9, 3.7673668940311346`*^9, 
+   3.7673691697537603`*^9, 3.767369614292141*^9, 3.7673698875422206`*^9, 
+   3.7673798397401257`*^9, 3.7673799191356654`*^9, 3.7673827416278234`*^9, 
+   3.7674296892380295`*^9, 3.767430148273836*^9, {3.767430603264235*^9, 
+   3.767430620221465*^9}, 3.7674307505908937`*^9, 3.767430858777084*^9, 
+   3.7674312302758427`*^9, 3.767451372718008*^9, 3.7675353031007133`*^9, 
+   3.7675354303345366`*^9, 3.7675357046277666`*^9, 3.7675481341814566`*^9, 
+   3.767552938368182*^9, 3.7675893369748507`*^9, 3.7675894507926507`*^9, 
+   3.7675939548949614`*^9, 3.767594980870718*^9, 3.7675950212207747`*^9, 
+   3.7675950878908677`*^9, 3.7675954972714405`*^9, 3.767595595901579*^9, 
+   3.7675987788427253`*^9, 3.7676066362987585`*^9, 3.7676068926228085`*^9, 
+   3.7676071332844315`*^9, 3.7676071660132885`*^9, 3.7676074437142763`*^9, 
+   3.767608586634684*^9, 3.767611939463069*^9, 3.7676139305933666`*^9, 
+   3.7676682516666884`*^9, 3.7676684964935184`*^9, 3.767668925182272*^9, 
+   3.7676689575211287`*^9, 3.767669349599617*^9, 3.768055292922559*^9, 
+   3.782669146010165*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"58e3cd6b-ebb8-4ca9-be64-a1b5da29f163"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Animator", "[", 
+  RowBox[{
+   RowBox[{"Dynamic", "[", "brojac", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{
+      RowBox[{"m", "*", "n", "*", "2"}], "+", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}], ",", 
+   RowBox[{"DefaultDuration", "\[Rule]", 
+    RowBox[{"m", "*", 
+     RowBox[{"n", "/", "2"}]}]}], ",", 
+   RowBox[{"AnimationRepetitions", "\[Rule]", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7672830976100082`*^9, 3.7672831206200485`*^9}, {
+  3.7672963636321106`*^9, 3.7672964042389812`*^9}, {3.767296644105003*^9, 
+  3.767296644198603*^9}, {3.7673562426918263`*^9, 3.767356248697837*^9}, {
+  3.767363394972399*^9, 3.7673634302284613`*^9}, {3.76743078835856*^9, 
+  3.7674308098085976`*^9}, {3.767431250353078*^9, 3.767431253426283*^9}, {
+  3.7674316189616632`*^9, 3.767431619086464*^9}, {3.767431700843054*^9, 
+  3.7674317046494603`*^9}, {3.7674318075506973`*^9, 3.767431843168689*^9}, {
+  3.7674319548908396`*^9, 3.76743195503124*^9}, {3.767432784366611*^9, 
+  3.767432784975012*^9}, {3.7676086312317696`*^9, 3.7676086315281706`*^9}, {
+  3.7676099543037653`*^9, 3.7676099709897194`*^9}, {3.767668677843837*^9, 
+  3.7676686967822704`*^9}, {3.7676690053820124`*^9, 3.7676690055536127`*^9}, {
+  3.7676690452556825`*^9, 3.76766907229053*^9}, {3.7680552375268617`*^9, 
+  3.7680552379792624`*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"a873b521-b8d2-4481-a9e7-43f5eababbba"],
+
+Cell[BoxData[
+ AnimatorBox[Dynamic[$CellContext`brojac], {2, 601, 1},
+  AnimationRepetitions->1,
+  AnimationRunTime->83.53099060058594,
+  AnimationRunning->False,
+  AnimationTimeIndex->150.,
+  DefaultDuration->150]], "Output",
+ CellChangeTimes->{
+  3.7674312536134834`*^9, 3.767431619960065*^9, 3.7674317065214634`*^9, {
+   3.767431810249502*^9, 3.767431843480689*^9}, 3.7674319555616407`*^9, 
+   3.7674327858954134`*^9, 3.76745137396601*^9, 3.767535305191117*^9, 
+   3.7675354303813367`*^9, 3.767535704928784*^9, 3.7675481401114645`*^9, 
+   3.7675529387881827`*^9, 3.767589337130851*^9, 3.7675894517910523`*^9, 
+   3.7675939553317623`*^9, 3.7675949813307185`*^9, 3.767595021240774*^9, 
+   3.767595087920868*^9, 3.7675954973114405`*^9, 3.7675955960115795`*^9, 
+   3.767598778920726*^9, 3.767606636751159*^9, 3.767606893075209*^9, 
+   3.7676071337368317`*^9, 3.7676071664656897`*^9, 3.767607443932677*^9, 
+   3.767608586681484*^9, 3.7676086319493713`*^9, {3.767609955993862*^9, 
+   3.7676099716357565`*^9}, 3.7676119395254693`*^9, 3.767613930702567*^9, 
+   3.767668251682288*^9, 3.7676684965403185`*^9, {3.767668679154239*^9, 
+   3.7676686975622716`*^9}, 3.7676689252290716`*^9, 3.7676689575679283`*^9, 
+   3.7676690059592133`*^9, {3.7676690461604843`*^9, 3.767669072711731*^9}, 
+   3.767669349724417*^9, 3.7680552929693584`*^9, 3.782669146093193*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"b564e4d7-16e9-48c8-8fc2-9bc260cc1a7a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"graph", ",", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"EdgeForm", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Thickness", "[", "Medium", "]"}], ",", "Black"}], "}"}], 
+          "]"}], ",", 
+         RowBox[{"Which", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"bojePoligona", "[", 
+             RowBox[{"[", "pol", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+           "LightRed", ",", 
+           RowBox[{
+            RowBox[{"bojePoligona", "[", 
+             RowBox[{"[", "pol", "]"}], "]"}], "\[Equal]", "0"}], ",", 
+           "White"}], "]"}], ",", 
+         RowBox[{"Polygon", "[", 
+          RowBox[{"poligoni", "[", 
+           RowBox[{"[", "pol", "]"}], "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"pol", ",", "1", ",", 
+         RowBox[{"Length", "[", "poligoni", "]"}], ",", "1"}], "}"}]}], "]"}],
+      "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.767668585678875*^9, 3.767668594570891*^9}, {
+  3.7676691881987333`*^9, 3.767669224203597*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"d3668fb0-8087-45f1-acbf-b2266435294e"],
+
+Cell[BoxData[
+ GraphicsBox[{{{
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{1., 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{2.2, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{3.4, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{4.6, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{5.8, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{7., 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{8.2, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{9.4, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{10.6, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{11.8, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{13., 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{14.2, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{15.4, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{16.6, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{17.8, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{19., 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{20.2, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{21.4, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{22.6, 17.8},
+       RoundingRadius->0.1]}}, {
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 1.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 2.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 3.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 4.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 5.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 7.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 8.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 9.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 10.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 11.8},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 13.},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 14.2},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 15.4},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 16.6},
+       RoundingRadius->0.1]}, 
+     {GrayLevel[0.85], EdgeForm[{GrayLevel[0], Thickness[Tiny]}], 
+      RectangleBox[{23.8, 17.8},
+       RoundingRadius->0.1]}}}, 
+   DynamicBox[Typeset`ToBoxes[
+     Table[{
+       EdgeForm[{
+         Thickness[Medium], Black}], 
+       Which[
+       Part[$CellContext`bojePoligona, $CellContext`pol] == 1, LightRed, 
+        Part[$CellContext`bojePoligona, $CellContext`pol] == 0, White], 
+       Polygon[
+        Part[$CellContext`poligoni, $CellContext`pol]]}, {$CellContext`pol, 1, 
+       Length[$CellContext`poligoni], 1}], StandardForm, Graphics],
+    ImageSizeCache->{{-3.239306690989906, 
+     571.2393066909899}, {-215.2393066909899, 208.2393066909899}}]},
+  Background->RGBColor[0.87, 0.94, 1],
+  ImageSize->{581., Automatic}]], "Output",
+ CellChangeTimes->{
+  3.7672797230352807`*^9, 3.7672964782923117`*^9, 3.7672966307981796`*^9, 
+   3.7673558587127523`*^9, 3.7673637206853714`*^9, 3.7673642208222494`*^9, 
+   3.7673643677745075`*^9, 3.7673645082371545`*^9, {3.7673646835970626`*^9, 
+   3.7673646988538895`*^9}, 3.7673648719577937`*^9, 3.767365851265492*^9, 
+   3.76736593760643*^9, 3.767366029774702*^9, 3.7673669229597893`*^9, 
+   3.767369889507824*^9, 3.7673798466041374`*^9, 3.767379922380471*^9, 
+   3.767382742376625*^9, 3.7674296933408365`*^9, 3.7674301514094415`*^9, {
+   3.7674306048554378`*^9, 3.767430620798666*^9}, 3.7674307511680946`*^9, 
+   3.767430859354285*^9, 3.767431230541043*^9, 3.7674513768364153`*^9, 
+   3.7675353073127203`*^9, 3.767535430506137*^9, 3.7675357055808215`*^9, 
+   3.767548142221468*^9, 3.7675529395581837`*^9, 3.767589337583252*^9, 
+   3.7675894536474557`*^9, 3.767593956657765*^9, 3.7675949826607203`*^9, 
+   3.7675950213107743`*^9, 3.767595088040868*^9, 3.7675954974514413`*^9, 
+   3.7675955962715797`*^9, 3.767598779263926*^9, 3.7676066380771613`*^9, 
+   3.7676068943700113`*^9, 3.7676071350472345`*^9, 3.7676071677760916`*^9, 
+   3.7676074447438784`*^9, 3.7676085868374844`*^9, 3.7676119397750697`*^9, 
+   3.7676139309521675`*^9, 3.7676682517914886`*^9, 3.7676684966963186`*^9, {
+   3.767668594882891*^9, 3.7676686075033135`*^9}, 3.767668925353872*^9, 
+   3.7676689576927285`*^9, 3.7676691938459435`*^9, 3.767669225560799*^9, 
+   3.7676693499428177`*^9, 3.768055293218959*^9, 3.7826691463662524`*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"ac9b49dc-7737-4023-b51d-eab9362d6ac6"]
+}, Open  ]]
+},
+WindowSize->{1440, 817},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2906, 85, 257, "Input",ExpressionUUID->"3b4b64ac-f567-470e-a9d4-25b56c473182"],
+Cell[3467, 107, 18144, 443, 352, "Input",ExpressionUUID->"17e573aa-a3b7-446c-af83-3e04bfb76c76"],
+Cell[21614, 552, 10227, 269, 466, "Input",ExpressionUUID->"20fa79b9-3e14-4f04-97de-7e6c397106b8"],
+Cell[31844, 823, 559, 13, 28, "Input",ExpressionUUID->"7030166c-5185-40d5-be82-50beb25d99c6"],
+Cell[32406, 838, 5363, 128, 181, "Input",ExpressionUUID->"f5b063de-7f97-471f-bda6-3aa2b3e45374"],
+Cell[37772, 968, 98596, 2077, 2765, "Input",ExpressionUUID->"bd5dc1b1-f427-471c-b186-ba834ea03579"],
+Cell[136371, 3047, 1320, 37, 28, "Input",ExpressionUUID->"57dced11-24b5-4e19-b7ff-d47662d9efea"],
+Cell[CellGroupData[{
+Cell[137716, 3088, 176, 3, 28, "Input",ExpressionUUID->"9976bfc0-35c1-423f-9934-c06481581a29"],
+Cell[137895, 3093, 1667, 25, 32, "Output",ExpressionUUID->"58e3cd6b-ebb8-4ca9-be64-a1b5da29f163"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[139599, 3123, 1471, 26, 28, "Input",ExpressionUUID->"a873b521-b8d2-4481-a9e7-43f5eababbba"],
+Cell[141073, 3151, 1429, 23, 43, "Output",ExpressionUUID->"b564e4d7-16e9-48c8-8fc2-9bc260cc1a7a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[142539, 3179, 1275, 33, 67, "Input",ExpressionUUID->"d3668fb0-8087-45f1-acbf-b2266435294e"],
+Cell[143817, 3214, 41175, 937, 457, "Output",ExpressionUUID->"ac9b49dc-7737-4023-b51d-eab9362d6ac6"]
+}, Open  ]]
+}
+]
+*)
+
