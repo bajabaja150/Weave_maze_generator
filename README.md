@@ -1,2 +1,2 @@
 # Weave_maze_generator
-Application of a DFS algorithm for generating a two-level maze
+Application of a DFS algorithm on generating two-level mazes. Requires Wolfram Mathematica 11 or newer.
